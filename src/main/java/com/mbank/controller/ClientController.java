@@ -180,6 +180,7 @@ public class ClientController {
 //	        return "client";
 //	    }
 	  
+	  @PreAuthorize("hasRole('ROLE_ADMIN')")
 	  @RequestMapping(value = "/viewClientDetails", method = RequestMethod.GET)
 		public String viewClientDetails(Model model , HttpSession session) {
 			
@@ -286,4 +287,45 @@ public class ClientController {
 	      return "redirect:index.jsp";
 				
 		}
+		
+		 @RequestMapping(value = "/viewClient", method = RequestMethod.GET)
+			public String viewClient(Model model , HttpSession session) {
+				
+				Clients client = (Clients)session.getAttribute("client");
+				
+				if (client == null ){
+				client = new Clients();
+				}
+				
+				model.addAttribute("client", client);
+
+				return "/viewClient";
+				
+			}
+			
+			@RequestMapping(value="/viewClient" , method= RequestMethod.POST)
+			public String viewClient(@Valid @ModelAttribute ("client") Clients client  , BindingResult result ,  Map<String, Object> map) {
+				
+		      System.out.println("Client Name : " + client.getClientId());
+				Clients clients = new Clients();
+		      
+		      if (result.hasErrors()){
+		    	  
+		    	  return "/viewClient";
+		    	  
+		      }
+		      else{
+
+		         Clients searchedClient =  clientService.viewClientDetails(client.getClientId());
+		         clients = searchedClient != null ? searchedClient :new Clients();  
+		          
+		      }    
+		      
+		      map.put("client", clients);
+		      map.put("clientList", clientService.viewClientDetails(clients.getClientId()));
+		      
+		      return "viewClient" ;
+					
+			}
+		
 }

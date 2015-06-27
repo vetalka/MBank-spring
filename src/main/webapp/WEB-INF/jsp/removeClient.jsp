@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<h1>Remove Client</h1>
+
  <form:form commandName="client">
         <table>
             <tr>

@@ -9,10 +9,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
-<title>View Alll Clients</title>
+<title>View All Clients</title>
 </head>
 <body>
-
+<h1>View All Clients</h1>
 
    
         <table border="1">

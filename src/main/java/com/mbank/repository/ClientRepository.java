@@ -18,5 +18,5 @@ public interface ClientRepository extends JpaRepository<Clients , Long> {
 	@Query("UPDATE Clients c SET c.address = ?2 , c.email = ?3 , c.phone = ?4 WHERE c.clientId = ?1")
 	public void updateClient( long clientId, String Address, String Email, String Phone);
 	
-
+	
 }

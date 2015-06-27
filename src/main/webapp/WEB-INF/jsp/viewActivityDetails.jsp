@@ -12,6 +12,8 @@
 <title>View Activity Details</title>
 </head>
 <body>
+<h1>View Activity Details</h1>
+
     <form:form commandName="activity">
         <table>
            <tr>

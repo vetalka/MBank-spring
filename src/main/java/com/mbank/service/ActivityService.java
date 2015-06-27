@@ -15,4 +15,5 @@ public interface ActivityService {
 	void depositToAccount(long clientId , double amount);
 	
 	void withdrawFromAccount(long clientId , double amount);
+	
 }

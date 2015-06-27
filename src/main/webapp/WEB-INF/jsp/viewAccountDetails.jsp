@@ -12,6 +12,8 @@
 <title>View Acount Details</title>
 </head>
 <body>
+
+<h1>View Acount Details</h1>
     <form:form commandName="account">
         <table>
            <tr>

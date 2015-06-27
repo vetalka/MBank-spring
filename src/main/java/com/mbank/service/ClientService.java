@@ -22,5 +22,4 @@ public interface ClientService {
 	
 	void updateClient( long clientId, String Address, String Email, String Phone);
 	
-	
 }

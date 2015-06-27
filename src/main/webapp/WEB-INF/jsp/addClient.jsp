@@ -36,6 +36,7 @@
 </head>
 <body>
 
+   <h1>Add Client</h1>
    <form:form commandName="client">
         <table>
             <tr>

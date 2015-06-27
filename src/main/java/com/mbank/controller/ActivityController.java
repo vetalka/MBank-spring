@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mbank.model.Activity;
+import com.mbank.model.Clients;
 import com.mbank.service.ActivityService;
 
 @Controller
@@ -64,6 +65,7 @@ public class ActivityController {
 		return "redirect:index.jsp";
 	}
 	
+        @PreAuthorize("hasRole('ROLE_ADMIN')")
 	    @RequestMapping(value = "/viewActivityDetails", method = RequestMethod.GET)
 		public String getActivityDetails(Model model , HttpSession session) {
 			
@@ -166,4 +168,36 @@ public class ActivityController {
 			return "redirect:index.jsp";
 		}
 		
+		 @RequestMapping(value = "/viewActivities", method = RequestMethod.GET)
+			public String viewActivities(Model model , HttpSession session) {
+				
+				Activity activity = (Activity)session.getAttribute("activity");
+				
+				if (activity == null ){
+				   activity=new Activity();
+				}
+				
+				model.addAttribute("activity", activity);
+
+				return "/viewActivities";
+				
+			}
+
+		 
+			@RequestMapping(value="/viewActivities" , method= RequestMethod.POST)
+			public String viewActivities(@Valid @ModelAttribute ("activity") Activity activity , BindingResult result,  Map<String, Object> map) {
+					
+		      Activity activityResult = new Activity();
+
+		      Long a = activity.getActivityId();
+		      Activity searchedActivity = activityService.viewActivitiesDetails(a);
+		      activityResult = searchedActivity != null ? searchedActivity :new Activity();
+		       
+	          map.put("activity", activityResult);
+		      map.put("activityList", activityService.viewActivitiesDetails(a));
+		      
+		      return "/viewActivities";	
+			}
+			
+
 }

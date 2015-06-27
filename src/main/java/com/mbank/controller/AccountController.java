@@ -58,6 +58,7 @@ public class AccountController {
 		return "redirect: addActivity.html";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value="/viewAccountDetails" , method = RequestMethod.GET)
 	public String viewAccountDetails(Model model , HttpSession session){
 		
@@ -102,5 +103,42 @@ public class AccountController {
 		List<Accounts>list = accountService.getAllAccounts();
 		
 		return new ModelAndView( "/viewAllAccountDetails" , "accountList" , list);
+	}
+	
+	@RequestMapping(value="/viewAccount" , method = RequestMethod.GET)
+	public String viewAccount(Model model , HttpSession session){
+		
+        Accounts accounts = (Accounts)session.getAttribute("account");
+		
+		if(accounts == null){
+			
+			accounts = new Accounts();
+			
+		}
+		
+		model.addAttribute("account", accounts);
+		
+		return "viewAccount";
+		
+	}
+	
+	@RequestMapping(value = "/viewAccount",  method = RequestMethod.POST)
+	public String viewAccount(@Valid @ModelAttribute ("account") Accounts account , HttpSession session, BindingResult result,  Map<String, Object> map){
+		
+		Accounts accounts = new Accounts();
+		
+		if(result.hasErrors()) {
+			return "/viewAccount";
+		}
+		else{
+			
+			Accounts ac=accountService.ViewAccountDetails(account.getAccountId());
+			accounts = ac != null ? ac : new Accounts();
+		}
+		
+		map.put("account", accounts);
+		map.put("accountList", accountService.ViewAccountDetails(accounts.getAccountId()));
+		
+		return "viewAccount";
 	}
 }

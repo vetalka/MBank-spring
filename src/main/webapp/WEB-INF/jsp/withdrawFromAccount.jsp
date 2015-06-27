@@ -10,6 +10,7 @@
 <title>Withdraw From Account</title>
 </head>
 <body>
+<h1>Withdraw From Account</h1>
      <form:form commandName="activity">
         <table>
             <tr>

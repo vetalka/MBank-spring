@@ -12,6 +12,8 @@
 <title>View Client Details</title>
 </head>
 <body>
+ <h1>View Client Details</h1>
+
     <form:form commandName="client">
         <table>
            <tr>

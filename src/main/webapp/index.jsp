@@ -103,6 +103,32 @@
         </a>
         </sec:authorize>
         
+        <sec:authorize ifAnyGranted="ROLE_ADMIN">
+        <a class="btn btn-primary" href="viewClientDetails.html">
+          View Client Details »    
+        </a>
+        </sec:authorize>
+        
+        <br>
+        
+          <sec:authorize ifAnyGranted="ROLE_ADMIN">
+         <a class="btn btn-primary" href="viewAccountDetails.html">
+          View Account Details »
+        </a>
+        </sec:authorize>
+        
+         <sec:authorize ifAnyGranted="ROLE_ADMIN">
+         <a class="btn btn-primary" href="viewActivityDetails.html">
+          View Activity Details »
+        </a>  
+        </sec:authorize>
+        
+        <sec:authorize ifAnyGranted="ROLE_ADMIN">
+        <a class="btn btn-primary" href="viewDepositsDetails.html">
+          View Deposits Details »
+        </a>
+        </sec:authorize>
+        
         <br>
         <!-- Client And Admin Action  -->
         
@@ -110,26 +136,26 @@
           View System Property »    
         </a>
         
-         <a class="btn btn-primary" href="viewClientDetails.html">
-          View Client Details »    
-        </a>
-        
+         
         <br>
         
-        <a class="btn btn-primary" href="viewActivityDetails.html">
-          View Activity Details »
-        </a>        
+        <!--  client action  -->
         
-        <a class="btn btn-primary" href="viewAccountDetails.html">
+         <a class="btn btn-primary" href="viewDeposit.html">
+          View Deposit Details »
+        </a>
+        
+         <a class="btn btn-primary" href="viewActivities.html">
+          View Activity Details »
+        </a>
+        
+         <a class="btn btn-primary" href="viewAccount.html">
           View Account Details »
         </a>
-        
-         <a class="btn btn-primary" href="viewDepositsDetails.html">
-          View Deposits Details »
-        </a>
-        
         <br>
-        <!--  client action  -->
+        <a class="btn btn-primary" href="viewClient.html">
+            View Client Details »
+        </a>
         
         <a class="btn btn-primary" href="updateClient.html">
           Update Client »

@@ -11,6 +11,9 @@
 <title>View Deposits Details</title>
 </head>
 <body>
+
+    <h1>View Deposite Details</h1>
+
     <form:form commandName="deposit">
         <table>
            <tr>

@@ -146,4 +146,36 @@ public class DepositController {
       
 		return "redirect:index.jsp";
 	}
+	
+	@RequestMapping(value="/viewDeposit" , method = RequestMethod.GET)
+	public String viewDeposit(Model model , HttpSession session){
+		
+       Deposits deposits =(Deposits)session.getAttribute("deposit");
+		
+		if(deposits == null){
+			
+			deposits = new Deposits();
+			
+		}
+		
+		model.addAttribute("deposit", deposits);
+		
+		return "/viewDeposit";
+		
+	}
+	
+	@RequestMapping(value = "/viewDeposit",  method = RequestMethod.POST)
+	public String viewDeposit(@Valid @ModelAttribute ("deposit") Deposits deposits , BindingResult result,  Map<String, Object> map){
+		
+		Deposits depositsSearch = new Deposits();
+
+		Long a = deposits.getDepositId();
+		Deposits de = depositsService.getDeposit(a);
+		depositsSearch = de != null ? de : new Deposits();
+		
+		map.put("deposit", depositsSearch);
+		map.put("depositList", depositsService.getDeposit(a));
+		
+		return "/viewDeposit";
+	}
 }

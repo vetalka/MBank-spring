@@ -14,7 +14,9 @@ public interface UsersRepository extends JpaRepository<Users, String>{
 	@Query("Delete Users where clientId=?1")
 	public void delete(Long clientId);
 
-	
+//	@Modifying
+//	@Query("Select Users s where s.username=?2 , s.password=?1")
+//	public Users login(String username , String password);
 
 	
 }

@@ -11,7 +11,7 @@
 <title>View All Deposits Details</title>
 </head>
 <body>
-
+<h1>View All Deposits Details</h1>
       <table border="2">
             <th>Deposit Id</th>
             <th>Client Id</th>

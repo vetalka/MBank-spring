@@ -8,10 +8,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
-<title>Crate New Deposit</title>
+<title>Crate New Deposite</title>
 </head>
 <body>
 
+    <h1>Create New Deposite</h1>
     <form:form commandName="deposit">
          <table>
             <tr>

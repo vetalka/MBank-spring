@@ -11,7 +11,7 @@
 <title>View All Activity Details</title>
 </head>
 <body>
-
+<h1>View All Activities Details</h1>
        <table border="1">
             <th>Activity Id</th>
             <th>Amount</th>
